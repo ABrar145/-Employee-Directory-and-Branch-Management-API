@@ -17,5 +17,9 @@
   "devDependencies": {
     "@types/jest": "^29.5.14",
     "ts-jest": "^29.2.5"
+  },
+  "dependencies": {
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   }
 }
