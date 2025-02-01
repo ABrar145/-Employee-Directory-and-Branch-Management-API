@@ -16,6 +16,8 @@
   "description": "",
   "devDependencies": {
     "@types/jest": "^29.5.14",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.7",
     "ts-jest": "^29.2.5"
   },
   "dependencies": {
