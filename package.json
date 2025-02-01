@@ -1,0 +1,21 @@
+{
+  "name": "-employee-directory-and-branch-management-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "ts-node src/server.ts",
+    "build": "tsc",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "ts-jest": "^29.2.5"
+  }
+}
