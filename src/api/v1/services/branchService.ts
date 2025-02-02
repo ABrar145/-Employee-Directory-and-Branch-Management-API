@@ -1,4 +1,4 @@
-import { Branch } from "../interfaces/Branch";
+import { Branch } from "../interfaces/branch";
 
 let branches: Branch[] = [];
 let branchIdCounter = 1;
