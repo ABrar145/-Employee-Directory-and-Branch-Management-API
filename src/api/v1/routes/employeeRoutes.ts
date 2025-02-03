@@ -1,60 +1,56 @@
 import { Router } from "express";
-import {
-    createEmployee,
-    getAllEmployees,
-    getEmployeeById,
-    updateEmployee,
-    deleteEmployee,
-} from "../controllers/employeeController";
+import * as employeeController from "../controllers/employeeController";
 
 const router = Router();
 
 /**
  * @swagger
- * /employees:
- *   post:
- *     summary: Create a new employee
- *     description: Adds a new employee to the directory.
+ * /employees/branch/{branchId}:
+ *   get:
+ *     summary: Get all employees for a specific branch
+ *     description: Retrieves all employees belonging to the specified branch ID.
+ *     parameters:
+ *       - name: branchId
+ *         in: path
+ *         required: true
+ *         description: ID of the branch to retrieve employees from
+ *         schema:
+ *           type: integer
  *     responses:
- *       201:
- *         description: Employee created successfully
+ *       200:
+ *         description: List of employees
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Employee'
  */
-router.post("/", createEmployee);
+router.get("/branch/:branchId", employeeController.getEmployeesByBranch);
 
 /**
  * @swagger
- * /employees:
+ * /employees/department/{department}:
  *   get:
- *     summary: Get all employees
- *     description: Returns a list of all employees.
+ *     summary: Get all employees in a department
+ *     description: Retrieves all employees in the specified department.
+ *     parameters:
+ *       - name: department
+ *         in: path
+ *         required: true
+ *         description: Name of the department to filter employees by
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: List of employees in the department
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Employee'
  */
-router.get("/", getAllEmployees);
-
-/**
- * @swagger
- * /employees/{id}:
- *   get:
- *     summary: Get employee by ID
- *     description: Returns a specific employee by their ID.
- */
-router.get("/:id", getEmployeeById);
-
-/**
- * @swagger
- * /employees/{id}:
- *   put:
- *     summary: Update employee details
- *     description: Updates an existing employee's details.
- */
-router.put("/:id", updateEmployee);
-
-/**
- * @swagger
- * /employees/{id}:
- *   delete:
- *     summary: Delete an employee
- *     description: Removes an employee from the directory.
- */
-router.delete("/:id", deleteEmployee);
+router.get("/department/:department", employeeController.getEmployeesByDepartment);
 
 export default router;

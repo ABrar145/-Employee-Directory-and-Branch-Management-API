@@ -1,117 +1,29 @@
 import { Request, Response } from "express";
 import * as employeeService from "../services/employeeService";
-import { Employee } from "../interfaces/employee";
 
-// Helper function to handle unknown errors
-const handleError = (error: unknown, res: Response, message: string) => {
-  if (error instanceof Error) {
-    res.status(500).json({ message, error: error.message });
+export const getEmployeesByBranch = (req: Request, res: Response): void => {
+  const branchId = parseInt(req.params.branchId);
+  const employeesInBranch = employeeService.getEmployeesByBranch(branchId);
+
+  if (employeesInBranch.length === 0) {
+      // Instead of returning, just send the response using res
+      res.status(404).json({ message: "No employees found for this branch" });
   } else {
-    res.status(500).json({ message, error: "An unknown error occurred" });
+      // Send the response with the employee data
+      res.json(employeesInBranch);
   }
 };
 
-export const createEmployee = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const employeeData: Employee = req.body;
-    const newEmployee = await employeeService.createEmployee(employeeData);
-    res.status(201).json(newEmployee);
-  } catch (error) {
-    console.error(error);
-    handleError(error, res, "Error creating employee");
-  }
-};
 
-export const getAllEmployees = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const employees = await employeeService.getAllEmployees();
-    res.status(200).json(employees);
-  } catch (error) {
-    console.error(error);
-    handleError(error, res, "Error fetching employees");
-  }
-};
+export const getEmployeesByDepartment = (req: Request, res: Response): void => {
+  const department = req.params.department;
+  const employeesInDepartment = employeeService.getEmployeesByDepartment(department);
 
-export const getEmployeeById = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const employeeId = Number(req.params.id);
-    if (isNaN(employeeId)) {
-      res.status(400).json({ message: "Invalid employee ID" });
-      return;
-    }
-    const employee = await employeeService.getEmployeeById(employeeId);
-    if (employee) {
-      res.status(200).json(employee);
-    } else {
-      res.status(404).json({ message: "Employee not found" });
-    }
-  } catch (error) {
-    console.error(error);
-    handleError(error, res, "Error fetching employee");
-  }
-};
-
-export const updateEmployee = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const employeeId = Number(req.params.id);
-    if (isNaN(employeeId)) {
-      res.status(400).json({ message: "Invalid employee ID" });
-      return;
-    }
-    const updatedData: Partial<Employee> = req.body;
-    const updatedEmployee = await employeeService.updateEmployee(employeeId, updatedData);
-    if (updatedEmployee) {
-      res.status(200).json(updatedEmployee);
-    } else {
-      res.status(404).json({ message: "Employee not found" });
-    }
-  } catch (error) {
-    console.error(error);
-    handleError(error, res, "Error updating employee");
-  }
-};
-
-export const deleteEmployee = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const employeeId = Number(req.params.id);
-    if (isNaN(employeeId)) {
-      res.status(400).json({ message: "Invalid employee ID" });
-      return;
-    }
-    const result = await employeeService.deleteEmployee(employeeId);
-    if (result) {
-      res.status(200).json({ message: "Employee deleted successfully" });
-    } else {
-      res.status(404).json({ message: "Employee not found" });
-    }
-  } catch (error) {
-    console.error(error);
-    handleError(error, res, "Error deleting employee");
-  }
-};
-
-export const getEmployeesByBranch = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const branchId = Number(req.params.branchId);
-    if (isNaN(branchId)) {
-      res.status(400).json({ message: "Invalid branch ID" });
-      return;
-    }
-    const employees = await employeeService.getEmployeesForBranch(branchId);
-    res.status(200).json(employees);
-  } catch (error) {
-    console.error(error);
-    handleError(error, res, "Error fetching employees by branch");
-  }
-};
-
-export const getEmployeesByDepartment = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const department = req.params.department;
-    const employees = await employeeService.getEmployeesByDepartment(department);
-    res.status(200).json(employees);
-  } catch (error) {
-    console.error(error);
-    handleError(error, res, "Error fetching employees by department");
+  if (employeesInDepartment.length === 0) {
+      // Send response without returning it
+      res.status(404).json({ message: "No employees found in this department" });
+  } else {
+      // Send the employee data as a response
+      res.json(employeesInDepartment);
   }
 };
