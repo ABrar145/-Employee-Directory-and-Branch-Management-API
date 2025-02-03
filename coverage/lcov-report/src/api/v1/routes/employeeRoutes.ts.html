@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/9</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/9</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -118,21 +118,10 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -144,7 +133,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -153,7 +141,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -162,7 +155,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -171,7 +163,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -180,68 +171,62 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Router } from "express";
-import {
-    createEmployee,
-    getAllEmployees,
-    getEmployeeById,
-    updateEmployee,
-    deleteEmployee,
-} from "../controllers/employeeController";
+import * as employeeController from "../controllers/employeeController";
 &nbsp;
 const router = Router();
 &nbsp;
 /**
  * @swagger
- * /employees:
- *   post:
- *     summary: Create a new employee
- *     description: Adds a new employee to the directory.
+ * /employees/branch/{branchId}:
+ *   get:
+ *     summary: Get all employees for a specific branch
+ *     description: Retrieves all employees belonging to the specified branch ID.
+ *     parameters:
+ *       - name: branchId
+ *         in: path
+ *         required: true
+ *         description: ID of the branch to retrieve employees from
+ *         schema:
+ *           type: integer
  *     responses:
- *       201:
- *         description: Employee created successfully
+ *       200:
+ *         description: List of employees
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Employee'
  */
-router.post("/", createEmployee);
+router.get("/branch/:branchId", employeeController.getEmployeesByBranch);
 &nbsp;
 /**
  * @swagger
- * /employees:
+ * /employees/department/{department}:
  *   get:
- *     summary: Get all employees
- *     description: Returns a list of all employees.
+ *     summary: Get all employees in a department
+ *     description: Retrieves all employees in the specified department.
+ *     parameters:
+ *       - name: department
+ *         in: path
+ *         required: true
+ *         description: Name of the department to filter employees by
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: List of employees in the department
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Employee'
  */
-router.get("/", getAllEmployees);
-&nbsp;
-/**
- * @swagger
- * /employees/{id}:
- *   get:
- *     summary: Get employee by ID
- *     description: Returns a specific employee by their ID.
- */
-router.get("/:id", getEmployeeById);
-&nbsp;
-/**
- * @swagger
- * /employees/{id}:
- *   put:
- *     summary: Update employee details
- *     description: Updates an existing employee's details.
- */
-router.put("/:id", updateEmployee);
-&nbsp;
-/**
- * @swagger
- * /employees/{id}:
- *   delete:
- *     summary: Delete an employee
- *     description: Removes an employee from the directory.
- */
-router.delete("/:id", deleteEmployee);
-&nbsp;
+router.get("/department/:department", employeeController.getEmployeesByDepartment);
 export default router;
 &nbsp;</pre></td></tr></table></pre>
 
@@ -250,7 +235,7 @@ export default router;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-02-03T20:03:10.999Z
+                at 2025-02-03T20:29:55.095Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

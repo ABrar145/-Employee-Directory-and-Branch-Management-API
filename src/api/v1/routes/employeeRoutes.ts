@@ -52,5 +52,4 @@ router.get("/branch/:branchId", employeeController.getEmployeesByBranch);
  *                 $ref: '#/components/schemas/Employee'
  */
 router.get("/department/:department", employeeController.getEmployeesByDepartment);
-
 export default router;

@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { healthCheck } from "../controllers/healthController";
 
 const router = Router();
 
-router.get("/", healthCheck);
+router.get("/", (req, res) => {
+    res.status(200).send("Server is healthy");
+});
 
 export default router;

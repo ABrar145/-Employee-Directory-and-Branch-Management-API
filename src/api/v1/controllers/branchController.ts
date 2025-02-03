@@ -62,17 +62,14 @@ export const updateBranch = async (req: Request, res: Response): Promise<void> =
   }
 };
 
-export const deleteBranch = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const branchId = parseInt(req.params.id);
-    const result = await branchService.deleteBranch(branchId);
-    if (result) {
-      res.status(200).json({ message: "Branch deleted successfully" });
-    } else {
+export const deleteBranch = (req: Request, res: Response): void => {
+  const branchId = Number(req.params.id);
+  const success = branchService.deleteBranch(branchId);
+
+  if (!success) {
       res.status(404).json({ message: "Branch not found" });
-    }
-  } catch (error) {
-    console.error(error);
-    handleError(error, res, "Error deleting branch");
+  } else {
+      // Change the status code to 204 (No Content) as the response should not contain any data
+      res.status(204).send();
   }
 };
