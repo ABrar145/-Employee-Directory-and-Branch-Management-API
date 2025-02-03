@@ -13,61 +13,36 @@ let employees: Employee[] = [
     { id: 10, name: "Elizabeth Jackson", position: "Marketing Specialist", department: "Marketing", email: "elizabeth.jackson@pixell-river.com", phone: "204-555-0234", branchId: 5 },
 ];
 
-export const getAllEmployees = (): Employee[] => {
-    return employees;
-};
-
-export const getEmployeeById = (id: number): Employee | undefined => {
-    return employees.find((employee) => employee.id === id);
-};
-
-export const addEmployee = (employeeData: Omit<Employee, "id">): Employee | string => {
-    const duplicate = employees.some(
-        (e) => e.email === employeeData.email || e.phone === employeeData.phone
-    );
-    if (duplicate) {
-        return "Employee with the same email or phone already exists.";
-    }
-
-    const newEmployee: Employee = {
-        id: Math.floor(Math.random() * 10000),
-        ...employeeData,
-    };
-
+export const createEmployee = (employeeData: Omit<Employee, "id">): Employee => {
+    const newEmployee: Employee = { id: employees.length + 1, ...employeeData };
     employees.push(newEmployee);
     return newEmployee;
 };
 
-export const updateEmployee = (id: number, employeeData: Partial<Employee>): Employee | string => {
-    const employee = getEmployeeById(id);
-    if (!employee) return "Employee not found.";
+export const getAllEmployees = (): Employee[] => employees;
 
-    if (Object.keys(employeeData).length === 0) {
-        return "No valid data provided for update.";
-    }
-
-    Object.assign(employee, employeeData);
-    return employee;
+export const getEmployeeById = (id: number): Employee | undefined => {
+    return employees.find(emp => emp.id === id);
 };
 
-export const deleteEmployee = (id: number): boolean | string => {
-    const index = employees.findIndex((employee) => employee.id === id);
-    if (index === -1) {
-        return "Employee not found.";
-    }
-    employees.splice(index, 1);
-    return true;
+export const getEmployeesByBranch = (branchId: number): Employee[] => {
+    return employees.filter(emp => emp.branchId === branchId);
 };
 
-export const createEmployee = (employee: Employee) => {
-    employees.push(employee);
-    return employee;
+export const getEmployeesByDepartment = (department: string): Employee[] => {
+    return employees.filter(emp => emp.department.toLowerCase() === department.toLowerCase());
 };
 
-export const getEmployeesForBranch = (branchId: number): Employee[] => {
-    return employees.filter(employee => employee.branchId === branchId);
+export const updateEmployee = (id: number, updatedData: Partial<Employee>): Employee | null => {
+    const empIndex = employees.findIndex(emp => emp.id === id);
+    if (empIndex === -1) return null;
+
+    employees[empIndex] = { ...employees[empIndex], ...updatedData };
+    return employees[empIndex];
 };
 
-export const getEmployeesByDepartment = (department: string) => {
-    return employees.filter(employee => employee.department === department);
+export const deleteEmployee = (id: number): boolean => {
+    const initialLength = employees.length;
+    employees = employees.filter(emp => emp.id !== id);
+    return employees.length < initialLength;
 };
