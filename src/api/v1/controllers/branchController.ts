@@ -23,7 +23,7 @@ export const createBranch = async (req: Request, res: Response): Promise<void> =
 
 export const getAllBranches = async (_req: Request, res: Response): Promise<void> => {
   try {
-    const branches = await branchService.getAllBranches();
+    const branches = await branchService.getBranches();
     res.status(200).json(branches);
   } catch (error) {
     console.error(error);

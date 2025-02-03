@@ -1,33 +1,112 @@
-import express from "express";
-import {
-    getBranches,
-    getBranchById,
-    createBranch,
-    updateBranch,
-    deleteBranch
-} from "../services/branchService";
+import { Router } from "express";
+import { createBranch, getAllBranches, getBranchById, updateBranch, deleteBranch } from "../controllers/branchController";
 
-const router = express.Router();
+const router = Router();
 
-router.get("/", (req, res) => res.json(getBranches()));
+/**
+ * @swagger
+ * tags:
+ *   name: Branch Management
+ *   description: API endpoints for managing branches
+ */
 
-router.get("/:id", (req, res) => {
-    const branch = getBranchById(Number(req.params.id));
-    return branch ? res.json(branch) : res.status(404).json({ error: "Branch not found" });
-});
+/**
+ * @swagger
+ * /api/v1/branches:
+ *   post:
+ *     summary: Create a new branch
+ *     tags: [Branch Management]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               address:
+ *                 type: string
+ *               phone:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Branch created successfully
+ */
+router.post("/", createBranch);
 
-router.post("/", (req, res) => {
-    const newBranch = createBranch(req.body);
-    res.status(201).json(newBranch);
-});
+/**
+ * @swagger
+ * /api/v1/branches:
+ *   get:
+ *     summary: Get all branches
+ *     tags: [Branch Management]
+ *     responses:
+ *       200:
+ *         description: List of branches
+ */
+router.get("/", getAllBranches);
 
-router.put("/:id", (req, res) => {
-    const updatedBranch = updateBranch(Number(req.params.id), req.body);
-    return updatedBranch ? res.json(updatedBranch) : res.status(404).json({ error: "Branch not found" });
-});
+/**
+ * @swagger
+ * /api/v1/branches/{id}:
+ *   get:
+ *     summary: Get branch by ID
+ *     tags: [Branch Management]
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Branch found
+ *       404:
+ *         description: Branch not found
+ */
+router.get("/:id", getBranchById);
 
-router.delete("/:id", (req, res) => {
-    return deleteBranch(Number(req.params.id)) ? res.sendStatus(204) : res.status(404).json({ error: "Branch not found" });
-});
+/**
+ * @swagger
+ * /api/v1/branches/{id}:
+ *   put:
+ *     summary: Update a branch
+ *     tags: [Branch Management]
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *     responses:
+ *       200:
+ *         description: Branch updated successfully
+ */
+router.put("/:id", updateBranch);
+
+/**
+ * @swagger
+ * /api/v1/branches/{id}:
+ *   delete:
+ *     summary: Delete a branch
+ *     tags: [Branch Management]
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: integer
+ *     responses:
+ *       200:
+ *         description: Branch deleted successfully
+ */
+router.delete("/:id", deleteBranch);
 
 export default router;

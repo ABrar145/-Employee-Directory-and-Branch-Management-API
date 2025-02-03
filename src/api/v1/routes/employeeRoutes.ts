@@ -1,63 +1,60 @@
-import express from "express";
+import { Router } from "express";
 import {
-    getEmployees,
-    getEmployeeById,
     createEmployee,
+    getAllEmployees,
+    getEmployeeById,
     updateEmployee,
-    deleteEmployee
-} from "../services/employeeService";
+    deleteEmployee,
+} from "../controllers/employeeController";
 
-const router = express.Router();
-
-/**
- * @swagger
- * /employees:
- *   get:
- *     summary: Get all employees
- */
-router.get("/", (req, res) => res.json(getEmployees()));
-
-/**
- * @swagger
- * /employees/{id}:
- *   get:
- *     summary: Get employee by ID
- */
-router.get("/:id", (req, res) => {
-    const employee = getEmployeeById(Number(req.params.id));
-    return employee ? res.json(employee) : res.status(404).json({ error: "Employee not found" });
-});
+const router = Router();
 
 /**
  * @swagger
  * /employees:
  *   post:
  *     summary: Create a new employee
+ *     description: Adds a new employee to the directory.
+ *     responses:
+ *       201:
+ *         description: Employee created successfully
  */
-router.post("/", (req, res) => {
-    const newEmployee = createEmployee(req.body);
-    res.status(201).json(newEmployee);
-});
+router.post("/", createEmployee);
+
+/**
+ * @swagger
+ * /employees:
+ *   get:
+ *     summary: Get all employees
+ *     description: Returns a list of all employees.
+ */
+router.get("/", getAllEmployees);
+
+/**
+ * @swagger
+ * /employees/{id}:
+ *   get:
+ *     summary: Get employee by ID
+ *     description: Returns a specific employee by their ID.
+ */
+router.get("/:id", getEmployeeById);
 
 /**
  * @swagger
  * /employees/{id}:
  *   put:
- *     summary: Update an employee
+ *     summary: Update employee details
+ *     description: Updates an existing employee's details.
  */
-router.put("/:id", (req, res) => {
-    const updatedEmployee = updateEmployee(Number(req.params.id), req.body);
-    return updatedEmployee ? res.json(updatedEmployee) : res.status(404).json({ error: "Employee not found" });
-});
+router.put("/:id", updateEmployee);
 
 /**
  * @swagger
  * /employees/{id}:
  *   delete:
  *     summary: Delete an employee
+ *     description: Removes an employee from the directory.
  */
-router.delete("/:id", (req, res) => {
-    return deleteEmployee(Number(req.params.id)) ? res.sendStatus(204) : res.status(404).json({ error: "Employee not found" });
-});
+router.delete("/:id", deleteEmployee);
 
 export default router;
