@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">93.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>12/30</span>
+                <span class='fraction'>28/30</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">36.84% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/19</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -96,65 +96,65 @@
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Branch } from "../interfaces/branch";
 &nbsp;
 let branches: Branch[] = [];
 let branchIdCounter = 1;
 &nbsp;
-export const getBranches = <span class="fstat-no" title="function not covered" >(): Branch[] =</span>&gt; <span class="cstat-no" title="statement not covered" >branches;</span>
+export const getBranches = (): Branch[] =&gt; branches;
 &nbsp;
-export const getBranchById = <span class="fstat-no" title="function not covered" >(i</span>d: number): Branch | undefined =&gt;
-<span class="cstat-no" title="statement not covered" >    branches.find(<span class="fstat-no" title="function not covered" >branch </span>=&gt; <span class="cstat-no" title="statement not covered" >branch.id === id)</span>;</span>
+export const getBranchById = (id: number): Branch | undefined =&gt;
+    branches.find(branch =&gt; branch.id === id);
 &nbsp;
-export const createBranch = <span class="fstat-no" title="function not covered" >(b</span>ranchData: Omit&lt;Branch, "id"&gt;): Branch =&gt; {
-    const newBranch<span class="cstat-no" title="statement not covered" > = { id: branchIdCounter++, ...branchData };</span>
-<span class="cstat-no" title="statement not covered" >    branches.push(newBranch);</span>
-<span class="cstat-no" title="statement not covered" >    return newBranch;</span>
+export const createBranch = (branchData: Omit&lt;Branch, "id"&gt;): Branch =&gt; {
+    const newBranch = { id: branchIdCounter++, ...branchData };
+    branches.push(newBranch);
+    return newBranch;
 };
 &nbsp;
-export const updateBranch = <span class="fstat-no" title="function not covered" >(i</span>d: number, updates: Partial&lt;Branch&gt;): Branch | null =&gt; {
-    const index = <span class="cstat-no" title="statement not covered" >branches.findIndex(<span class="fstat-no" title="function not covered" >branch </span>=&gt; <span class="cstat-no" title="statement not covered" >branch.id === id)</span>;</span>
-<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (index === -1) <span class="cstat-no" title="statement not covered" >return null;</span></span>
+export const updateBranch = (id: number, updates: Partial&lt;Branch&gt;): Branch | null =&gt; {
+    const index = branches.findIndex(branch =&gt; branch.id === id);
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (index === -1) <span class="cstat-no" title="statement not covered" >return null;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    branches[index] = { ...branches[index], ...updates };</span>
-<span class="cstat-no" title="statement not covered" >    return branches[index];</span>
+    branches[index] = { ...branches[index], ...updates };
+    return branches[index];
 };
 &nbsp;
-export const deleteBranch = <span class="fstat-no" title="function not covered" >(i</span>d: number): boolean =&gt; {
-    const index = <span class="cstat-no" title="statement not covered" >branches.findIndex(<span class="fstat-no" title="function not covered" >branch </span>=&gt; <span class="cstat-no" title="statement not covered" >branch.id === id)</span>;</span>
-<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (index === -1) <span class="cstat-no" title="statement not covered" >return false;</span></span>
+export const deleteBranch = (id: number): boolean =&gt; {
+    const index = branches.findIndex(branch =&gt; branch.id === id);
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (index === -1) <span class="cstat-no" title="statement not covered" >return false;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    branches.splice(index, 1);</span>
-<span class="cstat-no" title="statement not covered" >    return true;</span>
+    branches.splice(index, 1);
+    return true;
 };
 &nbsp;</pre></td></tr></table></pre>
 
@@ -163,7 +163,7 @@ export const deleteBranch = <span class="fstat-no" title="function not covered" 
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-02-03T19:58:35.065Z
+                at 2025-02-03T20:03:10.999Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
