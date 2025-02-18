@@ -1,4 +1,3 @@
-// src/api/v1/models/branchModel.ts
 import { Firestore } from '@google-cloud/firestore';  // Ensure Firestore is imported
 
 const firestore = new Firestore();  // Initialize Firestore
