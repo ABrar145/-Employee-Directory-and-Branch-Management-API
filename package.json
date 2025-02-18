@@ -17,6 +17,7 @@
   "description": "",
   "devDependencies": {
     "@types/jest": "^29.5.14",
+    "@types/joi": "^17.2.2",
     "@types/supertest": "^6.0.2",
     "@types/swagger-jsdoc": "^6.0.4",
     "@types/swagger-ui-express": "^4.1.7",
@@ -25,8 +26,16 @@
     "ts-jest": "^29.2.5"
   },
   "dependencies": {
+    "@google-cloud/firestore": "^7.11.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "firebase-admin": "^13.1.0",
+    "joi": "^17.13.3",
+    "nodemon": "^3.1.9",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
   }
-
 }

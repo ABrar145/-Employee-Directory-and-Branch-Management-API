@@ -1,4 +1,3 @@
-// src/api/v1/models/employeeModel.ts
 import { Firestore } from '@google-cloud/firestore';
 
 const firestore = new Firestore();

@@ -1,3 +1,7 @@
+// src/api/v1/models/branchModel.ts
+import { Firestore } from '@google-cloud/firestore';  // Ensure Firestore is imported
+
+const firestore = new Firestore();  // Initialize Firestore
 const branchesCollection = firestore.collection('branches');
 
 export const BranchModel = {
