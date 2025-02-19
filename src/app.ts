@@ -3,11 +3,13 @@ import morgan from "morgan";
 import setupSwagger from "./config/swagger";
 import employeeRoutes from "./api/v1/routes/employeeRoutes";
 import branchRoutes from "./api/v1/routes/branchRoutes";
+import healthRoutes from './api/v1/routes/healthRoutes';
 
 const app = express();
 
 app.use(morgan("combined"));
 app.use(express.json()); // Middleware for parsing JSON
+app.use('/health', healthRoutes);
 
 setupSwagger(app);
 

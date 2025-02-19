@@ -1,103 +1,152 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1738614595124" clover="3.2.0">
-  <project timestamp="1738614595125" name="All files">
-    <metrics statements="131" coveredstatements="95" conditionals="15" coveredconditionals="4" methods="33" coveredmethods="18" elements="179" coveredelements="117" complexity="0" loc="131" ncloc="131" packages="5" files="8" classes="8"/>
+<coverage generated="1739926728945" clover="3.2.0">
+  <project timestamp="1739926728945" name="All files">
+    <metrics statements="157" coveredstatements="100" conditionals="14" coveredconditionals="4" methods="32" coveredmethods="10" elements="203" coveredelements="114" complexity="0" loc="157" ncloc="157" packages="6" files="10" classes="10"/>
     <package name="src">
-      <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="app.ts" path="C:\Users\amnin\OneDrive\Desktop\another faltu\-Employee-Directory-and-Branch-Management-API\src\app.ts">
-        <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
         <line num="3" count="4" type="stmt"/>
         <line num="4" count="4" type="stmt"/>
         <line num="5" count="4" type="stmt"/>
-        <line num="7" count="4" type="stmt"/>
-        <line num="9" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
         <line num="10" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
         <line num="12" count="4" type="stmt"/>
         <line num="14" count="4" type="stmt"/>
-        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
         <line num="17" count="4" type="stmt"/>
+        <line num="19" count="4" type="stmt"/>
       </file>
     </package>
     <package name="src.api.v1.controllers">
-      <metrics statements="56" coveredstatements="33" conditionals="12" coveredconditionals="4" methods="12" coveredmethods="9"/>
+      <metrics statements="52" coveredstatements="22" conditionals="4" coveredconditionals="0" methods="10" coveredmethods="4"/>
       <file name="branchController.ts" path="C:\Users\amnin\OneDrive\Desktop\another faltu\-Employee-Directory-and-Branch-Management-API\src\api\v1\controllers\branchController.ts">
-        <metrics statements="43" coveredstatements="30" conditionals="8" coveredconditionals="4" methods="10" coveredmethods="9"/>
+        <metrics statements="21" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
         <line num="2" count="4" type="stmt"/>
-        <line num="5" count="4" type="stmt"/>
-        <line num="6" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
         <line num="13" count="4" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="24" count="4" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="34" count="4" type="stmt"/>
-        <line num="35" count="2" type="stmt"/>
-        <line num="36" count="2" type="stmt"/>
-        <line num="37" count="2" type="stmt"/>
-        <line num="38" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="39" count="1" type="stmt"/>
-        <line num="41" count="1" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="49" count="4" type="stmt"/>
-        <line num="50" count="1" type="stmt"/>
-        <line num="51" count="1" type="stmt"/>
-        <line num="52" count="1" type="stmt"/>
-        <line num="53" count="1" type="stmt"/>
-        <line num="54" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="55" count="1" type="stmt"/>
-        <line num="57" count="0" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="61" count="0" type="stmt"/>
-        <line num="65" count="4" type="stmt"/>
-        <line num="66" count="1" type="stmt"/>
-        <line num="67" count="1" type="stmt"/>
-        <line num="69" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="70" count="0" type="stmt"/>
-        <line num="73" count="1" type="stmt"/>
+        <line num="31" count="4" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
       </file>
       <file name="employeeController.ts" path="C:\Users\amnin\OneDrive\Desktop\another faltu\-Employee-Directory-and-Branch-Management-API\src\api\v1\controllers\employeeController.ts">
-        <metrics statements="13" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <metrics statements="31" coveredstatements="5" conditionals="4" coveredconditionals="0" methods="6" coveredmethods="0"/>
         <line num="2" count="4" type="stmt"/>
-        <line num="4" count="4" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
-        <line num="8" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="18" count="4" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="9" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="19" count="4" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
-        <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="33" count="4" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.api.v1.models">
+      <metrics statements="43" coveredstatements="29" conditionals="9" coveredconditionals="4" methods="8" coveredmethods="4"/>
+      <file name="branchModel.ts" path="C:\Users\amnin\OneDrive\Desktop\another faltu\-Employee-Directory-and-Branch-Management-API\src\api\v1\models\branchModel.ts">
+        <metrics statements="30" coveredstatements="25" conditionals="8" coveredconditionals="4" methods="4" coveredmethods="4"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="8" count="2" type="cond" truecount="4" falsecount="0"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="21" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="33" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="44" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+      </file>
+      <file name="employeeModel.ts" path="C:\Users\amnin\OneDrive\Desktop\another faltu\-Employee-Directory-and-Branch-Management-API\src\api\v1\models\employeeModel.ts">
+        <metrics statements="13" coveredstatements="4" conditionals="1" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.api.v1.routes">
-      <metrics statements="15" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="19" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="branchRoutes.ts" path="C:\Users\amnin\OneDrive\Desktop\another faltu\-Employee-Directory-and-Branch-Management-API\src\api\v1\routes\branchRoutes.ts">
-        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
         <line num="4" count="4" type="stmt"/>
         <line num="36" count="4" type="stmt"/>
-        <line num="48" count="4" type="stmt"/>
-        <line num="68" count="4" type="stmt"/>
-        <line num="92" count="4" type="stmt"/>
-        <line num="110" count="4" type="stmt"/>
-        <line num="112" count="4" type="stmt"/>
+        <line num="56" count="4" type="stmt"/>
+        <line num="80" count="4" type="stmt"/>
+        <line num="98" count="4" type="stmt"/>
+        <line num="100" count="4" type="stmt"/>
       </file>
       <file name="employeeRoutes.ts" path="C:\Users\amnin\OneDrive\Desktop\another faltu\-Employee-Directory-and-Branch-Management-API\src\api\v1\routes\employeeRoutes.ts">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -108,31 +157,17 @@
         <line num="54" count="4" type="stmt"/>
         <line num="55" count="4" type="stmt"/>
       </file>
+      <file name="healthRoutes.ts" path="C:\Users\amnin\OneDrive\Desktop\another faltu\-Employee-Directory-and-Branch-Management-API\src\api\v1\routes\healthRoutes.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+      </file>
     </package>
     <package name="src.api.v1.services">
-      <metrics statements="40" coveredstatements="27" conditionals="3" coveredconditionals="0" methods="20" coveredmethods="8"/>
-      <file name="branchService.ts" path="C:\Users\amnin\OneDrive\Desktop\another faltu\-Employee-Directory-and-Branch-Management-API\src\api\v1\services\branchService.ts">
-        <metrics statements="19" coveredstatements="19" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="8"/>
-        <line num="3" count="4" type="stmt"/>
-        <line num="4" count="4" type="stmt"/>
-        <line num="6" count="4" type="stmt"/>
-        <line num="8" count="4" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="11" count="4" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="17" count="4" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="19" count="1" type="cond" truecount="0" falsecount="1"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="25" count="4" type="stmt"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="27" count="1" type="cond" truecount="0" falsecount="1"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-      </file>
+      <metrics statements="21" coveredstatements="8" conditionals="1" coveredconditionals="0" methods="12" coveredmethods="0"/>
       <file name="employeeService.ts" path="C:\Users\amnin\OneDrive\Desktop\another faltu\-Employee-Directory-and-Branch-Management-API\src\api\v1\services\employeeService.ts">
         <metrics statements="21" coveredstatements="8" conditionals="1" coveredconditionals="0" methods="12" coveredmethods="0"/>
         <line num="3" count="4" type="stmt"/>
