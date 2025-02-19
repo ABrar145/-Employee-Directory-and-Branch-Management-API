@@ -53,3 +53,130 @@ The branchId is successfully parsed from the request URL.
 The branchService.deleteBranch method is called to delete the branch.
 If the branch is found and deleted, the response returns a 204 No Content status code.
 If the branch is not found, the response returns a 404 with the message "Branch not found".
+
+----------------------------------------------------------------------
+
+Scenario 1: Authentication Middleware Debugging
+
+Breakpoint Location: src/api/v1/middleware/authMiddleware.ts (Line 3)
+
+Objective: Investigate how the authentication middleware processes authorization headers.
+
+Debugger Observations
+
+Variable States:
+
+req.headers.authorization: Contains the token provided in the request.
+
+Call Stack:
+
+authMiddleware.ts → branchRoutes.ts → app.ts
+
+Behavior:
+
+If the authorization header is missing or incorrect, a 403 error is returned.
+
+If valid, request proceeds to the next middleware/controller.
+
+Analysis
+
+What did you learn?
+
+Ensures only authorized users access protected endpoints.
+
+Unexpected Behavior?
+
+If authHeader is incorrectly formatted, access is denied.
+
+Areas for Improvement?
+
+Implement JWT-based authentication instead of hardcoded tokens.
+
+How does this help?
+
+Strengthens API security by validating authentication headers.
+
+Scenario 2: Firestore Branch Model Debugging
+
+Breakpoint Location: src/api/v1/models/branchModel.ts (Line 6)
+
+Objective: Investigate how Firestore interacts with the branch collection and handles errors.
+
+Debugger Observations
+
+Variable States:
+
+firestore: Firestore instance connected to the database.
+
+data: The request payload being validated.
+
+Call Stack:
+
+branchModel.ts → branchController.ts → branchRoutes.ts
+
+Behavior:
+
+If a required field (name, address, phone) is missing, an error is thrown.
+
+If Firestore operations fail, error logs are printed to console.
+
+Analysis
+
+What did you learn?
+
+Firestore throws an error if document structure is incorrect.
+
+Unexpected Behavior?
+
+If Firestore credentials are missing, API fails to connect.
+
+Areas for Improvement?
+
+Add structured error handling to provide clearer messages.
+
+How does this help?
+
+Ensures Firestore operations are reliable and handle edge cases.
+
+Scenario 3: Joi Validation Debugging
+
+Breakpoint Location: src/api/v1/schemas/branchSchema.ts (Line 3)
+
+Objective: Investigate how Joi validates incoming branch data before Firestore operations.
+
+Debugger Observations
+
+Variable States:
+
+req.body: Contains incoming request data.
+
+validationResult.error: Stores validation errors if present.
+
+Call Stack:
+
+branchSchema.ts → validationMiddleware.ts → branchRoutes.ts
+
+Behavior:
+
+If a field is missing or incorrect, a 400 error response is returned.
+
+If validation passes, request moves forward to Firestore operations.
+
+Analysis
+
+What did you learn?
+
+Validation ensures data consistency before database interactions.
+
+Unexpected Behavior?
+
+If regex for phone is incorrect, API rejects valid numbers.
+
+Areas for Improvement?
+
+Provide more user-friendly validation error messages.
+
+How does this help?
+
+Prevents invalid data from entering the database, reducing potential issues.
+
