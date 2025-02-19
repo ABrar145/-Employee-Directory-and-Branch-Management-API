@@ -1,5 +1,5 @@
 import { Firestore } from '@google-cloud/firestore';
-
+import { firestore } from '../../config/firebase";
 const firestore = new Firestore();
 const employeesCollection = firestore.collection('employees');
 
