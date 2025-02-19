@@ -1,75 +1,37 @@
-import { Request, Response } from "express";
-import * as branchService from "../services/branchService";
-import { Branch } from "../interfaces/branch";
+import { Request, Response, NextFunction } from "express";
+import { BranchModel } from '../models/branchModel';
 
-const handleError = (error: unknown, res: Response, message: string) => {
-  if (error instanceof Error) {
-    res.status(500).json({ message, error: error.message });
-  } else {
-    res.status(500).json({ message, error: "An unknown error occurred" });
-  }
-};
-
-export const createBranch = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const branchData: Branch = req.body;
-    const newBranch = await branchService.createBranch(branchData);
-    res.status(201).json(newBranch);
-  } catch (error) {
-    console.error(error);
-    handleError(error, res, "Error creating branch");
-  }
-};
-
-export const getAllBranches = async (_req: Request, res: Response): Promise<void> => {
-  try {
-    const branches = await branchService.getBranches();
-    res.status(200).json(branches);
-  } catch (error) {
-    console.error(error);
-    handleError(error, res, "Error fetching branches");
-  }
-};
-
-export const getBranchById = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const branchId = parseInt(req.params.id);
-    const branch = await branchService.getBranchById(branchId);
-    if (branch) {
-      res.status(200).json(branch);
-    } else {
-      res.status(404).json({ message: "Branch not found" });
-    }
-  } catch (error) {
-    console.error(error);
-    handleError(error, res, "Error fetching branch");
-  }
-};
-
-export const updateBranch = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const branchId = parseInt(req.params.id);
-    const updatedData: Partial<Branch> = req.body;
-    const updatedBranch = await branchService.updateBranch(branchId, updatedData);
-    if (updatedBranch) {
-      res.status(200).json(updatedBranch);
-    } else {
-      res.status(404).json({ message: "Branch not found" });
-    }
-  } catch (error) {
-    console.error(error);
-    handleError(error, res, "Error updating branch");
-  }
-};
-
-export const deleteBranch = (req: Request, res: Response): void => {
-  const branchId = Number(req.params.id);
-  const success = branchService.deleteBranch(branchId);
-
-  if (!success) {
-      res.status(404).json({ message: "Branch not found" });
-  } else {
-      // Change the status code to 204 (No Content) as the response should not contain any data
-      res.status(204).send();
+export const BranchController = {
+  async createBranch(req: Request, res: Response, next: NextFunction) {
+      try {
+          const branch = await BranchModel.createBranch(req.body);
+          res.status(201).json(branch);
+      } catch (error) {
+          next(error);
+      }
+  },
+  async getBranchById(req: Request, res: Response, next: NextFunction) {
+      try {
+          const branch = await BranchModel.getBranchById(req.params.id);
+          res.json(branch);
+      } catch (error) {
+          next(error);
+      }
+  },
+  async updateBranch(req: Request, res: Response, next: NextFunction) {
+      try {
+          const updatedBranch = await BranchModel.updateBranch(req.params.id, req.body);
+          res.json(updatedBranch);
+      } catch (error) {
+          next(error);
+      }
+  },
+  async deleteBranch(req: Request, res: Response, next: NextFunction) {
+      try {
+          const response = await BranchModel.deleteBranch(req.params.id);
+          res.json(response);
+      } catch (error) {
+          next(error);
+      }
   }
 };
