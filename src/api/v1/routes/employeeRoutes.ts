@@ -5,17 +5,10 @@ const router = Router();
 
 /**
  * @swagger
- * /employees/branch/{branchId}:
+ * /employees:
  *   get:
- *     summary: Get all employees for a specific branch
- *     description: Retrieves all employees belonging to the specified branch ID.
- *     parameters:
- *       - name: branchId
- *         in: path
- *         required: true
- *         description: ID of the branch to retrieve employees from
- *         schema:
- *           type: integer
+ *     summary: Get all employees
+ *     description: Retrieves a list of all employees.
  *     responses:
  *       200:
  *         description: List of employees
@@ -26,6 +19,15 @@ const router = Router();
  *               items:
  *                 $ref: '#/components/schemas/Employee'
  */
+router.get("/", employeeController.getAllEmployees); // ✅ Add this route
+
+/**
+ * @swagger
+ * /employees/branch/{branchId}:
+ *   get:
+ *     summary: Get all employees for a specific branch
+ *     description: Retrieves all employees belonging to the specified branch ID.
+ */
 router.get("/branch/:branchId", employeeController.getEmployeesByBranch);
 
 /**
@@ -34,22 +36,7 @@ router.get("/branch/:branchId", employeeController.getEmployeesByBranch);
  *   get:
  *     summary: Get all employees in a department
  *     description: Retrieves all employees in the specified department.
- *     parameters:
- *       - name: department
- *         in: path
- *         required: true
- *         description: Name of the department to filter employees by
- *         schema:
- *           type: string
- *     responses:
- *       200:
- *         description: List of employees in the department
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Employee'
  */
 router.get("/department/:department", employeeController.getEmployeesByDepartment);
+
 export default router;
