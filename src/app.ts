@@ -6,12 +6,14 @@ import branchRoutes from "./api/v1/routes/branchRoutes";
 import healthRoutes from './api/v1/routes/healthRoutes';
 import dotenv from "dotenv";
 import helmet from "helmet";
+import cors from "cors";
 
 const app = express();
 require('dotenv').config();
 
 // Security middleware
 app.use(helmet());
+app.use(cors());
 
 app.use(morgan("combined"));
 app.use(express.json()); // Middleware for parsing JSON
