@@ -6,6 +6,8 @@ import branchRoutes from "./api/v1/routes/branchRoutes";
 import healthRoutes from './api/v1/routes/healthRoutes';
 
 const app = express();
+require('dotenv').config();
+
 
 app.use(morgan("combined"));
 app.use(express.json()); // Middleware for parsing JSON
