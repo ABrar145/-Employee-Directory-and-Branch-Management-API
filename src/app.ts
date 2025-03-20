@@ -4,6 +4,7 @@ import setupSwagger from "./config/swagger";
 import employeeRoutes from "./api/v1/routes/employeeRoutes";
 import branchRoutes from "./api/v1/routes/branchRoutes";
 import healthRoutes from './api/v1/routes/healthRoutes';
+import dotenv from "dotenv";
 
 const app = express();
 require('dotenv').config();
