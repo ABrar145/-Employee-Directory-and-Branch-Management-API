@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Application } from "express";
 import morgan from "morgan";
 import setupSwagger from "./config/swagger";
 import employeeRoutes from "./api/v1/routes/employeeRoutes";
@@ -10,6 +10,7 @@ import cors from "cors";
 
 const app = express();
 require('dotenv').config();
+
 
 // Security middleware
 app.use(helmet());
