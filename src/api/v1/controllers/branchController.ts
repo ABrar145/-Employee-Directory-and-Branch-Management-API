@@ -1,38 +1,66 @@
 import { Request, Response, NextFunction } from "express";
-import { BranchModel } from '../models/branchModel';
+import * as branchService from "../services/branchService";
+import { Branch } from "../interfaces/branch";
 
-export async function createBranch(req: Request, res: Response, next: NextFunction) {
-  try {
-      const branch = await BranchModel.createBranch(req.body);
-      res.status(201).json(branch);
-  } catch (error) {
-      next(error);
-  }
-}
+const handleError = (error: unknown, next: NextFunction, message: string) => {
+  const err = error instanceof Error ? error : new Error("An unknown error occurred");
+  console.error(message, err);
+  next(err); // Pass to Express error handler
+};
 
-export async function getBranchById(req: Request, res: Response, next: NextFunction) {
+// Create Branch
+export const createBranch = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-      const branch = await BranchModel.getBranchById(req.params.id);
-      res.json(branch);
+    const branchData: Omit<Branch, "id"> = req.body;
+    const newBranch = await branchService.createBranch(branchData);
+    res.status(201).json(newBranch);
   } catch (error) {
-      next(error);
+    handleError(error, next, "Error creating branch");
   }
-}
+};
 
-export async function updateBranch(req: Request, res: Response, next: NextFunction) {
+// Get Branch by ID
+export const getBranchById = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-      const updatedBranch = await BranchModel.updateBranch(req.params.id, req.body);
-      res.json(updatedBranch);
+    const branchId = parseInt(req.params.id);
+    const branch = await branchService.getBranchById(branchId);
+    if (!branch) {
+      res.status(404).json({ message: "Branch not found" });
+      return;
+    }
+    res.status(200).json(branch);
   } catch (error) {
-      next(error);
+    handleError(error, next, "Error fetching branch");
   }
-}
+};
 
-export async function deleteBranch(req: Request, res: Response, next: NextFunction) {
+// Update Branch
+export const updateBranch = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
-      const response = await BranchModel.deleteBranch(req.params.id);
-      res.json(response);
+    const branchId = parseInt(req.params.id);
+    const updatedData: Partial<Branch> = req.body;
+    const updatedBranch = await branchService.updateBranch(branchId, updatedData);
+    if (!updatedBranch) {
+      res.status(404).json({ message: "Branch not found" });
+      return;
+    }
+    res.status(200).json(updatedBranch);
   } catch (error) {
-      next(error);
+    handleError(error, next, "Error updating branch");
   }
-}
+};
+
+// Delete Branch
+export const deleteBranch = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const branchId = parseInt(req.params.id);
+    const result = await branchService.deleteBranch(branchId);
+    if (!result) {
+      res.status(404).json({ message: "Branch not found" });
+      return;
+    }
+    res.status(200).json({ message: "Branch deleted successfully" });
+  } catch (error) {
+    handleError(error, next, "Error deleting branch");
+  }
+};
