@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { createBranch, getBranchById, updateBranch, deleteBranch } from "../controllers/branchController";
+import { getAllBranches } from "../controllers/branchController";
 
 const router = Router();
 
@@ -10,7 +11,6 @@ const router = Router();
  *   description: API endpoints for managing branches
  */
 
-/**
 
 
 /**
@@ -48,5 +48,8 @@ router.put("/:id", updateBranch);
  *     tags: [Branch Management]
  */
 router.delete("/:id", deleteBranch);
+
+
+router.get("/", getAllBranches);
 
 export default router;

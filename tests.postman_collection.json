@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "64ad8ec4-1677-490b-b7b1-6b50c8b85b3c",
+		"name": "tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41634443"
+	},
+	"item": [
+		{
+			"name": " http://localhost:3000/api/v1/employees",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Security-Policy",
+						"value": "default-src 'self'",
+						"description": "Prevents loading external scripts (XSS protection).",
+						"type": "text"
+					},
+					{
+						"key": "X-Frame-Options",
+						"value": "DENY",
+						"description": "Prevents clickjacking attacks (blocks iframe embedding).",
+						"type": "text"
+					},
+					{
+						"key": "X-Content-Type-Options",
+						"value": "nosniff",
+						"description": "Blocks MIME type sniffing attacks.",
+						"type": "text"
+					},
+					{
+						"key": "X-XSS-Protection",
+						"value": "1; mode=block",
+						"description": "Enables browser-based XSS filtering.",
+						"type": "text"
+					},
+					{
+						"key": "Referrer-Policy",
+						"value": "no-referrer",
+						"description": "Limits what information is sent in the Referer header.",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api-docs",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api-docs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api-docs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": " http://localhost:3000/api/v1/branches",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/branches",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"branches"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

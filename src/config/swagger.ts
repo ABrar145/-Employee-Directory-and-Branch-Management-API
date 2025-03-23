@@ -10,7 +10,7 @@ const options: swaggerJsdoc.Options = {
             version: "1.0.0",
             description: "API documentation for managing employees and branches",
         },
-        servers: [{ url: "http://localhost:5000" }], // Ensure correct server port
+        servers: [{ url: "http://localhost:3000" }], // Ensure correct server port
     },
     apis: ["./src/api/v1/routes/*.ts", "./dist/api/v1/routes/*.js"], // 🛠️ Include both TypeScript & compiled JavaScript files
 };
@@ -19,7 +19,7 @@ const swaggerSpec = swaggerJsdoc(options);
 
 const setupSwagger = (app: Express) => {
     app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-    console.log("✅ Swagger docs available at http://localhost:5000/api-docs");
+    console.log(" Swagger is set up at /api-docs");
 };
 
 export default setupSwagger;

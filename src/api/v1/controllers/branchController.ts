@@ -64,3 +64,10 @@ export const deleteBranch = async (req: Request, res: Response, next: NextFuncti
     handleError(error, next, "Error deleting branch");
   }
 };
+
+export const getAllBranches = (req: Request, res: Response) => {
+  res.status(200).json({
+    message: "All branches retrieved successfully",
+    branches: [], // Return actual data here
+  });
+};
