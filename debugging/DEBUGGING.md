@@ -180,3 +180,83 @@ How does this help?
 
 Prevents invalid data from entering the database, reducing potential issues.
 
+-------------------------------------------------------
+## Scenario 1: OpenAPI (Swagger) Configuration and Integration
+
+- **Breakpoint Location:** `src/config/swagger.ts`, Line 5
+- **Objective:** Debug the creation of the OpenAPI (Swagger) specification object and ensure the correct configuration for documenting API endpoints.
+
+### Debugger Observations
+
+- **Variable States:**
+  - `options.definition.openapi` = `"3.0.0"`
+  - `options.definition.info.title` = `"Employee Directory and Branch Management API"`
+  - `options.apis` = `["./src/api/v1/routes/*.ts", "./dist/api/v1/routes/*.js"]`
+  - `swaggerSpec` = Fully populated OpenAPI object with paths for all endpoints.
+
+- **Call Stack:**
+  - `Object.<anonymous>` → `swagger.ts:5`
+  - `setupSwagger()` → `index.ts:12` (or wherever it's imported)
+  - `app.listen()` → `server.ts:xx`
+
+- **Behavior:**
+  - At this breakpoint, the Swagger options object is being constructed.
+  - The debugger confirms that all necessary paths (`apis`) and metadata are defined correctly before being passed to `swaggerJsdoc`.
+
+### Analysis
+
+- **What did you learn from this scenario?**
+  - This step ensures that both TypeScript and compiled JavaScript files are included in the Swagger docs.
+  - Verifies that all metadata (title, version, description) is correctly loaded into the OpenAPI spec.
+
+- **Did you observe any unexpected behavior?**
+  - No unexpected behavior was observed. Everything initialized properly.
+
+## Scenario 2: Retrieving All Branches
+
+- **Breakpoint Location:** `src/api/v1/controllers/branchController.ts`, Line 68
+- **Objective:** Analyze the behavior of the `getAllBranches` controller function to verify that it sends a valid response and understand how it will eventually retrieve data from the service layer.
+
+### Debugger Observations
+
+- **Variable States:**
+  - No request parameters are required (`req.params` and `req.query` are empty).
+  - The `branches` field in the response is an empty array (`[]`) as currently hardcoded.
+  - The response status is set to `200`.
+
+- **Call Stack:**
+  - `getAllBranches()` → `branchController.ts:68`
+  - Route Handler `GET /branches` → `branchRoutes.ts`
+  - Express Middleware Stack
+
+- **Behavior:**
+  - The function executes successfully and returns a hardcoded JSON response:
+    ```json
+    {
+      "message": "All branches retrieved successfully",
+      "branches": []
+    }
+    ```
+  - The actual data fetching logic is missing (likely a placeholder for future integration with `branchService.getAllBranches()`).
+
+  ## Scenario 3: Fetching All Employees via Controller
+
+- **Breakpoint Location:** `src/api/v1/controllers/employeeController.ts`, Line 25
+- **Objective:** Debug the logic inside the `getAllEmployees` controller to ensure that the service call works correctly and the employee data is returned to the client.
+
+### Debugger Observations
+
+- **Variable States:**
+  - `employees` = Array of employee objects (fetched via `employeeService.getAllEmployees()`)
+  - Each object includes expected fields like `id`, `name`, `position`, etc.
+  - `res.status(200)` is properly invoked with the `employees` array
+
+- **Call Stack:**
+  - `getAllEmployees()` → `employeeController.ts:25`
+  - `router.get('/employees')` → `employeeRoutes.ts`
+  - Middleware stack → Express core
+
+- **Behavior:**
+  - The controller executes as expected.
+  - The data from `employeeService` is returned successfully to the client in JSON format.
+  - No exceptions are thrown and response is correctly formatted.
